@@ -153,4 +153,4 @@ SIMPLE_JWT ={
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
 # custom user model
-AUTH_USER_MODELS = 'users.USER'
+AUTH_USER_MODEL = 'users.User'  
