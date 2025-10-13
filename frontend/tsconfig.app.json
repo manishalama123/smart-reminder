@@ -25,5 +25,10 @@
     "noUncheckedSideEffectImports": true,
   
 },
+// {
+//   "extends": "./tsconfig.json",
+//   "compilerOptions": {
+//     "baseUrl": "."
+//   },
   "include": ["src"]
 }
