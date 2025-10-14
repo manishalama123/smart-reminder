@@ -22,7 +22,7 @@ export const authAPI ={
         api.post<User>('/users/register/', data),
 
     login: (credential: LoginCredentials)=>
-        api.post<AuthTokens>('/users/loging/', credential),
+        api.post<AuthTokens>('/users/login/', credential),
 
     refreshToken: (refresh:string)=>
         api.post<{access:string}>('/users/token/refresh', {refresh}),
