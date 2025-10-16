@@ -66,3 +66,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* Calendar styles */
+.rbc-calendar {
+  min-height: 600px;
+}
+
+.rbc-toolbar {
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.rbc-header {
+  padding: 10px 3px;
+  font-weight: 600;
+}
+
+.rbc-today {
+  background-color: #eef2ff;
+}
+
+.rbc-event {
+  background-color: #3b82f6;
+  border-radius: 4px;
+  padding: 2px 5px;
+}

@@ -33,7 +33,7 @@ export const authAPI ={
 };
 
 // Reminders API
-export const reminderAPI = {
+export const remindersAPI = {
     getAll:() =>
         api.get<Reminder>('/reminders'),
 

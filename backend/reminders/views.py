@@ -4,7 +4,7 @@ from .serializers import ReminderSerializer
 from rest_framework import viewsets, permissions
 
 class ReminderViewSet(viewsets.ModelViewSet):
-    serializers_class = ReminderSerializer
+    serializer_class = ReminderSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):

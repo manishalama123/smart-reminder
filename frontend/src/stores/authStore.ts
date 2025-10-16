@@ -21,9 +21,12 @@ export const useAuthStore = create<AuthState>((set) => ({
   
     initAuth: async () => {
         const token = localStorage.getItem('access_token');
+        console.log('Init auth, token exists:', !!token); 
         if(token){
             try{
                 const response = await authAPI.getCurrentUser();
+                console.log('User loaded:', response.data);
+                set({ user: response.data, isAuthenticated: true, loading: false });
             }
             catch(error){
                 localStorage.removerItem('access_token');
