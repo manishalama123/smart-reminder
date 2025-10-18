@@ -10,12 +10,14 @@ interface ReminderFormProps {
     open: boolean;
     onClose: () => void;
     onSubmit: (data: Partial<Reminder>) => Promise<void>;
+    onDelete?: (id: number) => Promise<void>;
     initialDate?: Date;
     reminder?: Reminder | null;
 }
 
-export default function ReminderForm({ open, onClose, onSubmit, initialDate, reminder }: ReminderFormProps) {
+export default function ReminderForm({ open, onClose, onSubmit, onDelete, initialDate, reminder }: ReminderFormProps) {
     const [loading, setLoading] = useState(false);
+    const [deleting, setDeleting] = useState(false);
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -54,6 +56,20 @@ export default function ReminderForm({ open, onClose, onSubmit, initialDate, rem
         }
     };
 
+    const handleDelete = async () => {
+        if (!reminder || !onDelete) return;
+        if (!confirm('Are you sure you want to delete this reminder?'))
+            setDeleting(true);
+        try {
+            await onDelete(reminder.id);
+            onClose();
+        } catch (error) {
+            console.error('Failed to delete reminder:', error);
+        } finally {
+            setDeleting(false);
+        }
+
+    };
     return (
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-[425px]">
@@ -96,6 +112,14 @@ export default function ReminderForm({ open, onClose, onSubmit, initialDate, rem
                     </div>
 
                     <div className="flex justify-end gap-2">
+                        {reminder && onDelete && (
+                            <Button
+                                type="button"
+                                variant="destructive"
+                                onClick={handleDelete}
+                                disabled={deleting || loading}>{deleting ? 'Deleting' : 'Delete'}
+                            </Button>
+                        )}
                         <Button type="button" variant="outline" onClick={onClose}>Cancel</Button>
                         <Button type="submit" disabled={loading}>{loading ? 'Saving...' : 'Save'}</Button>
                     </div>

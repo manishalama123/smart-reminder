@@ -60,16 +60,15 @@ export default function Dashboard() {
   };
 
   const handleSelectEvent = (event: any) => {
-    console.log('🔍 Clicked event:', event);
-    console.log('🔍 Event resource:', event.resource);
-    console.log('🔍 Setting selectedReminder to:', event.resource);
     setSelectedReminder(event.resource);
     setFormOpen(true);
   };
+
   const handleCreateReminder = async (data: Partial<Reminder>) => {
     await remindersAPI.create(data);
     await fetchReminders();
   };
+
   const handleUpdateReminder = async (data: Partial<Reminder>) => {
     if (selectedReminder) {
       await remindersAPI.update(selectedReminder.id, data);
@@ -77,11 +76,17 @@ export default function Dashboard() {
     }
   };
 
+  const handleDeleteReminder = async (id: number)=>{
+    await remindersAPI.delete(id);
+    await fetchReminders();
+  }
+
   const handleCloseForm = () => {
     setFormOpen(false);
     setSelectedReminder(null);
     setSelectedDate(undefined);
   };
+  
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -123,6 +128,7 @@ export default function Dashboard() {
           open={formOpen}
           onClose={handleCloseForm}
           onSubmit={selectedReminder ? handleUpdateReminder : handleCreateReminder}
+          onDelete={handleDeleteReminder}
           initialDate={selectedDate}
           reminder={selectedReminder}
         />
