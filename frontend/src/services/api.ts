@@ -44,7 +44,7 @@ export const remindersAPI = {
         api.post<Reminder>('/reminders/', data),
 
     update: (id:number, data: Partial<Reminder>)=>
-        api.put<Reminder>(`/reminder/${id}/`, data),
+        api.put<Reminder>(`/reminders/${id}/`, data),
 
     delete: (id: number)=>
         api.delete(`/reminders/${id}/`)

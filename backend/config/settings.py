@@ -149,7 +149,7 @@ REST_FRAMEWORK = {
 # JWT settings
 from datetime import timedelta
 SIMPLE_JWT ={
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=200),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
 }
 # custom user model

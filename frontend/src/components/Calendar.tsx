@@ -27,7 +27,7 @@ export default function Calendar({reminders, onSelectSlot, onSelectEvent}: Calen
         title:reminder.title,
         start: new Date(reminder.reminder_datetime),
         end: new Date(reminder.reminder_datetime),
-        resourse:reminder,
+        resource:reminder,
     }));
   return (
     <div className='h-[600px] bg-white p-4 rounded-lg shadow '>

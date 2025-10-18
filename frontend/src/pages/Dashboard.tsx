@@ -60,6 +60,9 @@ export default function Dashboard() {
   };
 
   const handleSelectEvent = (event: any) => {
+    console.log('🔍 Clicked event:', event);
+    console.log('🔍 Event resource:', event.resource);
+    console.log('🔍 Setting selectedReminder to:', event.resource);
     setSelectedReminder(event.resource);
     setFormOpen(true);
   };
