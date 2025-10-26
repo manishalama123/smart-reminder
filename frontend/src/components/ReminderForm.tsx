@@ -46,7 +46,7 @@ export default function ReminderForm({ open, onClose, onSubmit, onDelete, initia
         try {
             await onSubmit({
                 ...formData,
-                reminder_datetime: new Date(formData.reminder_datetime).toISOString(),
+                reminder_datetime: formData.reminder_datetime + ':00'
             });
             onClose();
         } catch (error) {
