@@ -171,5 +171,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bettertoday07@gmail.com'  # Change this
-EMAIL_HOST_PASSWORD = 'vsvb uuxv jogj wyrh'  # Use App Password, not regular password
+EMAIL_HOST_PASSWORD = 'vsvbuuxvjogjwyrh'  # Use App Password, not regular password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
