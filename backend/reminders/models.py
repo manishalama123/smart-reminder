@@ -6,6 +6,7 @@ class Reminder(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     reminder_datetime = models.DateTimeField()
+    celery_task_id = models.CharField(max_length=255, blank=True, null=True)  # added for celery 
     is_sent = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
