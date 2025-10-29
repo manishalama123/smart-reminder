@@ -27,6 +27,8 @@ def send_reminder_email(reminder_id):
             recipient_list=[user_email],
             fail_silently=False,
         )
+        reminder.is_sent = True
+        reminder.save(update_fields=['is_sent'])
 
         print(f"✅ Email sent to {user_email} for reminder: {reminder.title}")
         return f"Email sent successfully to {user_email}"
