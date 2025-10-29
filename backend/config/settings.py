@@ -173,3 +173,28 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bettertoday07@gmail.com'  # Change this
 EMAIL_HOST_PASSWORD = 'vsvbuuxvjogjwyrh'  # Use App Password, not regular password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+import dj_database_url
+if os.environ.get('RENDER'):
+    DEBUG = False
+    ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME'), 'localhost']
+
+    # Database
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600
+        )
+    }
+
+    # Celery with Upstash Redis
+    CELERY_BROKER_URL = os.environ.get('UPSTASH_REDIS_URL')
+    CELERY_RESULT_BACKEND = os.environ.get('UPSTASH_REDIS_URL')
+
+    # Static files
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    # CORS
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('FRONTEND_URL', 'http://localhost:5173'),
+    ]

@@ -47,4 +47,4 @@ celerybeat.pid
 # Coverage/Testing
 .coverage
 htmlcov/
-.pytest_cache/
+.pytest_cache/s
